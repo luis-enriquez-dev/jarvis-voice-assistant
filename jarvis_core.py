@@ -1,5 +1,3 @@
-import pyttsx3
-import subprocess
 import time
 import os
 import wave
