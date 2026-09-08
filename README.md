@@ -33,6 +33,7 @@ source jarvis_env/bin/activate
 pip install pyaudio numpy wakeonlan piper-tts anthropic openwakeword pywhispercpp
 
 export ANTHROPIC_API_KEY=sk-ant-...
+export JARVIS_PC_MAC=00-00-00-00-00-00
 python3 jarvis_core.py
 ```
 
