@@ -96,11 +96,8 @@ def wake_computer (mac_address):
 	time.sleep(5)
 	speak("Computer is booting")
 
-<<<<<<< HEAD
-PC_MAC = "XX-XX-XX-XX-XX-XX"  # your PC's MAC address for Wake-on-LAN
-=======
+
 PC_MAC = os.environ.get("JARVIS_PC_MAC", "")
->>>>>>> e09d5b5 (Move PC MAC address to environment variable)
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 if not API_KEY:
