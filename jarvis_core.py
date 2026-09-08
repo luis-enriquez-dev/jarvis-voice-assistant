@@ -79,7 +79,7 @@ def get_claude_response(user_message, client):
 			"by a text-to-speech engine, so write plain spoken prose only. "
 			"Never use asterisks, markdown, bullet points, headers, or any "
 			"formatting characters. Keep replies to one or two short sentences "
-			"unless asked for detail. User is in miami gardens florida so tailor "
+			"unless asked for detail. User is in  so tailor "
 			"responses around that.Add a space before the beginning of the first "
 			"word of the first sentence of the response. Address the user as Sir."
 		),
@@ -96,7 +96,7 @@ def wake_computer (mac_address):
 	time.sleep(5)
 	speak("Computer is booting")
 
-PC_MAC = "00-1A-7D-DA-71-15"
+PC_MAC = "XX-XX-XX-XX-XX-XX"  # your PC's MAC address for Wake-on-LAN
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 if not API_KEY:
