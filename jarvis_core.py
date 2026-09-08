@@ -91,11 +91,20 @@ def get_claude_response(user_message, client):
 
 def wake_computer (mac_address):
 	"""Wake PC via Wake-on-Lan"""
+	if not mac_address:
+		speak("No computer address is configured, Sir")
+		return
 	speak("waking your computer")
 	send_magic_packet(mac_address)
 	time.sleep(5)
 	speak("Computer is booting")
 
+def handle_command(text, client):
+	lowered = text.lower()
+	if "wake" in lowered and ("computer" in lowered or "pc" in lowered):
+		wake_computer(PC_MAC)
+		return
+	speak(get_claude_response(text, client))
 
 PC_MAC = os.environ.get("JARVIS_PC_MAC", "")
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
@@ -122,13 +131,15 @@ if __name__ == "__main__":
 				print("Wake word detected")
 				speak(" Yes sir?")
 				OWW.reset()
+				drain(stream, 0.3)
 
 				if record_until_silence(stream, "/tmp/command.wav"):
 					text = transcribe_audio("/tmp/command.wav")
 					print("HEARD:", repr(text))
-					if text:
-						speak(get_claude_response(text, client))
+					if text and not is_junk(text):
+						handle_command(text, client)
 				OWW.reset()
+				drain(stream, 0.3)
 				print("Listening for wake word...")
 	except KeyboardInterrupt:
 		stream.stop_stream()
