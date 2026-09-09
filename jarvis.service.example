@@ -1,0 +1,20 @@
+[Unit]
+Description=Jarvis Voice Assistant
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dademadeluis
+WorkingDirectory=/home/dademadeluis/jarvis
+Environment="ANTHROPIC_API_KEY=PUT-YOUR-KEY-HERE"
+Environment="JARVIS_PC_MAC=00-1A-7D-DA-71-15"
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+ExecStart=/home/dademadeluis/jarvis_env/bin/python3 /home/dademadeluis/jarvis/jarvis_core.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
