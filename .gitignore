@@ -1,7 +1,25 @@
+# personal data
+memory.txt
+journal.txt
+notes/
+
+# python
 __pycache__/
 *.pyc
-*.wav
-*.onnx
-*.bin
-.env
+jarvis_env/
 venv/
+.venv/
+
+# models (large binaries)
+*.onnx
+*.onnx.json
+*.bin
+whisper.cpp/
+
+# secrets
+.env
+*.key
+
+# editor / os
+.vscode/
+.DS_Store
